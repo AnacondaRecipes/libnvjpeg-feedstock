@@ -37,7 +37,7 @@ outputs:
       binary_relocation: false
       missing_dso_whitelist:
         # Needed for rpath issues with conda-build and use of --error-overlinking command-line argument
-        - '$RPATH/libgcc_s.so.1'  # [linux]
+        - "*libgcc_s.so.*"  # [linux]
     files:
       - lib/libnvjpeg.so.*            # [linux]
       - targets/{{ target_name }}/lib/libnvjpeg.so.*  # [linux]
@@ -71,6 +71,7 @@ outputs:
       license_file: LICENSE
       license: LicenseRef-NVIDIA-End-User-License-Agreement
       license_url: https://docs.nvidia.com/cuda/eula/index.html
+      license_family: Other
       summary: nvJPEG native runtime libraries
       description: |
         nvJPEG native runtime libraries
@@ -115,6 +116,7 @@ outputs:
       license_file: LICENSE
       license: LicenseRef-NVIDIA-End-User-License-Agreement
       license_url: https://docs.nvidia.com/cuda/eula/index.html
+      license_family: Other
       summary: nvJPEG native runtime libraries
       description: |
         nvJPEG native runtime libraries
@@ -143,6 +145,7 @@ outputs:
       license_file: LICENSE
       license: LicenseRef-NVIDIA-End-User-License-Agreement
       license_url: https://docs.nvidia.com/cuda/eula/index.html
+      license_family: Other
       summary: nvJPEG native runtime libraries
       description: |
         nvJPEG native runtime libraries
@@ -154,6 +157,7 @@ about:
   license_file: LICENSE
   license: LicenseRef-NVIDIA-End-User-License-Agreement
   license_url: https://docs.nvidia.com/cuda/eula/index.html
+  license_family: Other
   summary: nvJPEG native runtime libraries
   description: |
     nvJPEG native runtime libraries
@@ -161,9 +165,6 @@ about:
   dev_url: https://docs.nvidia.com/cuda/nvjpeg/index.html
 
 extra:
-  skip-lints:
-    - license_file_overspecified
-    - missing_tests
   recipe-maintainers:
     - conda-forge/cuda
   feedstock-name: libnvjpeg
