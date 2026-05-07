@@ -1,6 +1,6 @@
 {% set name = "libnvjpeg" %}
-{% set version = "13.0.3.75" %}
-{% set cuda_version = "13.1" %}
+{% set version = "13.1.0.48" %}
+{% set cuda_version = "13.2" %}
 {% set platform = "linux-x86_64" %}  # [linux64]
 {% set platform = "linux-sbsa" %}  # [aarch64]
 {% set platform = "windows-x86_64" %}  # [win]
@@ -16,9 +16,9 @@ package:
 
 source:
   url: https://developer.download.nvidia.com/compute/cuda/redist/{{ name }}/{{ platform }}/{{ name }}-{{ platform }}-{{ version }}-archive.{{ extension }}
-  sha256: 3cab9b53be22df1f107f8c0d5fc26c76b7d3dd74abee1b2390be81a3a9454065  # [linux64]
-  sha256: 464f3b0426b64a1f6fbe381f91f1dd9b65527c07fc3f388f4ca584534ab5e782  # [aarch64]
-  sha256: b1681853ec61f9f34532c7de312678e61c3726fb7cc60fe40e2a72e838465e92  # [win]
+  sha256: dde259ec09f408b6e75ead30d85fe6033778a5681d0c38b48a58b89ea9310566  # [linux64]
+  sha256: 5b796f26ec94c2cafadd9e0ce2fb38896e3c2751da26a28a9a49c47184c64e6c  # [aarch64]
+  sha256: 2fdb78e4a1d4586080f2417ff509de7053230055205720c352c0a083c892de11  # [win]
 
 build:
   number: 0
@@ -37,7 +37,7 @@ outputs:
       binary_relocation: false
       missing_dso_whitelist:
         # Needed for rpath issues with conda-build and use of --error-overlinking command-line argument
-        - '$RPATH/libgcc_s.so.1'  # [linux]
+        - "*libgcc_s.so.*"  # [linux]
     files:
       - lib/libnvjpeg.so.*            # [linux]
       - targets/{{ target_name }}/lib/libnvjpeg.so.*  # [linux]
@@ -71,6 +71,7 @@ outputs:
       license_file: LICENSE
       license: LicenseRef-NVIDIA-End-User-License-Agreement
       license_url: https://docs.nvidia.com/cuda/eula/index.html
+      license_family: Other
       summary: nvJPEG native runtime libraries
       description: |
         nvJPEG native runtime libraries
@@ -115,6 +116,7 @@ outputs:
       license_file: LICENSE
       license: LicenseRef-NVIDIA-End-User-License-Agreement
       license_url: https://docs.nvidia.com/cuda/eula/index.html
+      license_family: Other
       summary: nvJPEG native runtime libraries
       description: |
         nvJPEG native runtime libraries
@@ -143,6 +145,7 @@ outputs:
       license_file: LICENSE
       license: LicenseRef-NVIDIA-End-User-License-Agreement
       license_url: https://docs.nvidia.com/cuda/eula/index.html
+      license_family: Other
       summary: nvJPEG native runtime libraries
       description: |
         nvJPEG native runtime libraries
@@ -154,6 +157,7 @@ about:
   license_file: LICENSE
   license: LicenseRef-NVIDIA-End-User-License-Agreement
   license_url: https://docs.nvidia.com/cuda/eula/index.html
+  license_family: Other
   summary: nvJPEG native runtime libraries
   description: |
     nvJPEG native runtime libraries
@@ -161,9 +165,6 @@ about:
   dev_url: https://docs.nvidia.com/cuda/nvjpeg/index.html
 
 extra:
-  skip-lints:
-    - license_file_overspecified
-    - missing_tests
   recipe-maintainers:
     - conda-forge/cuda
   feedstock-name: libnvjpeg
