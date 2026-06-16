@@ -3,3 +3,7 @@ upstream_sources:
   - webpage:
       url: https://api.anaconda.org/package/conda-forge/libnvjpeg
       regex: '"version":\s*"([^"]+)"'
+    packages:
+      - libnvjpeg
+      - libnvjpeg-dev
+      - libnvjpeg-static
