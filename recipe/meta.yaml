@@ -169,6 +169,10 @@ about:
   dev_url: https://docs.nvidia.com/cuda/nvjpeg/index.html
 
 extra:
+  skip-lints:
+    - deprecate_license_url
+    # /outputs/2/test: missing_tests: output "libnvjpeg-static": No tests were found.
+    - missing_tests
   recipe-maintainers:
     - conda-forge/cuda
   feedstock-name: libnvjpeg
