@@ -7,3 +7,13 @@ upstream_sources:
       - libnvjpeg
       - libnvjpeg-dev
       - libnvjpeg-static
+  - webpage:
+      url: https://api.anaconda.org/package/conda-forge/libnvjpeg
+      regex: '"version":\s*"(13\.2(?:\.\d+)*)"'
+    feedstock_branch: '13.2'
+    version_matchspec: '>=13.2,<13.3'
+    supported: true
+    packages:
+      - libnvjpeg
+      - libnvjpeg-dev
+      - libnvjpeg-static
