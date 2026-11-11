@@ -84,6 +84,9 @@ outputs:
 
   - name: libnvjpeg-dev
     build:
+      missing_dso_whitelist:
+        # Needed for rpath issues with conda-build and use of --error-overlinking command-line argument
+        - "*libc.so.*"  # [linux]
       run_exports:
         - {{ pin_subpackage("libnvjpeg", max_pin="x") }}
     files:
